@@ -1,11 +1,13 @@
 -- Rooted landing page — email waitlist
 --
--- Run this once in the Supabase SQL Editor for the project that backs the
--- landing page (reused from rooted-app: snsajxnwravyhohzuxnr).
+-- Run this in the Supabase SQL Editor for the project that backs the landing
+-- page (reused from rooted-app: snsajxnwravyhohzuxnr).
 --
--- The landing page's /api/waitlist route writes to this table server-side using
--- the service-role key, which bypasses RLS. RLS is enabled with no anon/
--- authenticated policies, so the table is unreachable by the public anon key.
+-- Security model: the landing page connects with the PUBLIC anon key only.
+-- An INSERT-only RLS policy lets anyone add their email, but no one can read,
+-- update, or delete the list with the anon key. The service-role key (which
+-- bypasses RLS) is intentionally NOT used by the landing page — reads happen
+-- from the Supabase dashboard or rooted-app, never from this deployment.
 
 create table if not exists public.waitlist_signups (
   id         uuid primary key default gen_random_uuid(),
@@ -15,5 +17,11 @@ create table if not exists public.waitlist_signups (
 
 alter table public.waitlist_signups enable row level security;
 
--- Intentionally no policies for anon/authenticated roles:
--- only the server-side service-role key (which bypasses RLS) can read or write.
+-- Anyone (anon or signed-in) may add their email; that's the whole policy.
+-- No SELECT/UPDATE/DELETE policies → the list is not readable via the anon key.
+drop policy if exists "Public can join the waitlist" on public.waitlist_signups;
+create policy "Public can join the waitlist"
+  on public.waitlist_signups
+  for insert
+  to anon, authenticated
+  with check (true);
