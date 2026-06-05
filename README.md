@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rooted — Landing Page
 
-## Getting Started
+The marketing landing page for **Rooted**, the calm command center for new parents:
+track Mom's recovery and Baby's care side by side. This site introduces the product
+and collects email signups for the pre-launch waitlist.
 
-First, run the development server:
+Built from a [Claude Design](https://claude.ai/design) handoff (the "Lamb Hero" v2).
+
+## Tech stack
+
+- **Next.js 16** (App Router) + **TypeScript**
+- **CSS custom properties** for the design system (no Tailwind) — tokens + styles in `app/globals.css`
+- **Cormorant Garamond** + **Inter** via `next/font/google`
+- **Supabase** for the waitlist (`@supabase/supabase-js`)
+- **lucide-react** for icons
+
+## Local development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+nvm use            # Node 20 (see .nvmrc)
+npm install
+cp .env.example .env.local   # then fill in the values (see below)
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`npm run build` produces the production build; `npm run lint` runs ESLint.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Copy `.env.example` to `.env.local` and set:
 
-## Learn More
+| Variable | Purpose |
+|---|---|
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Public anon key (safe to expose) |
 
-To learn more about Next.js, take a look at the following resources:
+The landing page uses **only the public anon key**. The waitlist relies on an
+INSERT-only row-level-security policy: anyone can add their email, but no one can
+read the list with this key. The Supabase **service-role key is intentionally not
+used here**, so this deployment never carries a credential that can read the rest
+of the database.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Database setup
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The waitlist writes to a `waitlist_signups` table. Run the SQL in
+[`supabase/waitlist_signups.sql`](supabase/waitlist_signups.sql) once in the
+Supabase SQL editor — it creates the table, enables RLS, and adds the
+INSERT-only policy.
 
-## Deploy on Vercel
+## Waitlist API
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+`POST /api/waitlist` with `{ "email": "..." }`:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Invalid email → `400`
+- New signup → `200 { ok: true }`
+- Already on the list → `409`
+
+The handler ([`app/api/waitlist/route.ts`](app/api/waitlist/route.ts)) runs
+server-side and inserts via the anon client in [`lib/supabase.ts`](lib/supabase.ts).
+If env vars are missing it logs a warning and returns `200` so local dev never hard-fails.
+
+## Deployment (Vercel)
+
+This project deploys on Vercel (project `rooted-landing`). Set
+`NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` in the Vercel
+project's environment variables for Production and Preview.
+
+- Preview: `vercel deploy`
+- Production: `vercel --prod`
+
+Node version is pinned to 20 via `.nvmrc`.

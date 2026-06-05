@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getSupabaseAdmin } from '@/lib/supabase';
+import { getSupabaseClient } from '@/lib/supabase';
 
 export async function POST(req: NextRequest) {
   const { email } = await req.json();
@@ -8,11 +8,11 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Please enter a valid email.' }, { status: 400 });
   }
 
-  const supabase = getSupabaseAdmin();
+  const supabase = getSupabaseClient();
 
   if (!supabase) {
     // Supabase not configured — accept gracefully in dev
-    console.warn('[waitlist] Supabase not configured. Set NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY.');
+    console.warn('[waitlist] Supabase not configured. Set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY.');
     return NextResponse.json({ ok: true });
   }
 
