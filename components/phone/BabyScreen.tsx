@@ -47,7 +47,7 @@ export function BabyScreen() {
         <RSectionTitle action="+ Log">Today&apos;s feeds</RSectionTitle>
         <RCard tone="white" padding={4}>
           {feeds.map((f, i) => (
-            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '14px 16px', borderBottom: i < feeds.length - 1 ? '1px solid #EFE7D8' : 'none' }}>
+            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '14px 16px', borderBottom: i < feeds.length - 1 ? '1px solid #E2D5BD' : 'none' }}>
               <div style={{ width: 8, height: 8, borderRadius: 999, background: R_BEIGE }} />
               <div style={{ flex: 1 }}>
                 <div style={{ fontFamily: FONT_BODY, fontSize: 14, fontWeight: 600, color: R_TEXT }}>{f.detail}</div>

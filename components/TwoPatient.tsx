@@ -19,7 +19,7 @@ export function TwoPatient() {
             <li>Postpartum appointments, in one place</li>
           </ul>
           <svg className="leaf-deco" width="220" height="220" viewBox="0 0 64 64" aria-hidden="true">
-            <path d="M32 4 C20 14 14 28 14 44 C28 44 40 28 32 4 Z" fill="#A6B68C"/>
+            <path d="M32 4 C20 14 14 28 14 44 C28 44 40 28 32 4 Z" fill="#889B6E"/>
             <path d="M32 4 C44 14 50 28 50 44 C36 44 24 28 32 4 Z" fill="#7E9168"/>
           </svg>
         </div>
@@ -34,7 +34,7 @@ export function TwoPatient() {
             <li>Daily care notes, shared with your partner</li>
           </ul>
           <svg className="leaf-deco" width="220" height="220" viewBox="0 0 64 64" aria-hidden="true">
-            <circle cx="32" cy="32" r="22" fill="#EFDCC4"/>
+            <circle cx="32" cy="32" r="22" fill="#DFC9A9"/>
             <circle cx="26" cy="28" r="2.5" fill="#8E6B3F"/>
             <circle cx="38" cy="28" r="2.5" fill="#8E6B3F"/>
             <path d="M26 38 q6 4 12 0" stroke="#8E6B3F" strokeWidth="2" fill="none" strokeLinecap="round"/>

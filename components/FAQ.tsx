@@ -35,20 +35,24 @@ export function FAQ() {
         </div>
         <div className="faq-list reveal" data-reveal="true">
           {items.map((it, i) => (
-            <div
-              key={i}
-              className={`faq-item ${open === i ? 'open' : ''}`}
-              onClick={() => setOpen(open === i ? null : i)}
-            >
-              <div className="faq-q">
+            <div key={i} className={`faq-item ${open === i ? 'open' : ''}`}>
+              <button
+                type="button"
+                className="faq-q"
+                aria-expanded={open === i}
+                aria-controls={`faq-a-${i}`}
+                onClick={() => setOpen(open === i ? null : i)}
+              >
                 <span>{it.q}</span>
-                <span className="faq-toggle">
+                <span className="faq-toggle" aria-hidden="true">
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                     <path d="M7 2v10M2 7h10" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                   </svg>
                 </span>
+              </button>
+              <div className="faq-a" id={`faq-a-${i}`} inert={open === i ? undefined : true}>
+                <div className="faq-a-inner"><p>{it.a}</p></div>
               </div>
-              <div className="faq-a"><p>{it.a}</p></div>
             </div>
           ))}
         </div>

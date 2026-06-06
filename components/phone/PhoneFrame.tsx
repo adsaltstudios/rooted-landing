@@ -14,7 +14,7 @@ export function PhoneFrame({
     <div style={{ transform: `scale(${scale})`, transformOrigin: 'center', display: 'inline-block' }}>
       <IOSDevice width={320} height={696}>
         <IOSStatusBar time="9:41" />
-        <div style={{ position: 'absolute', inset: 0, paddingTop: 50, background: '#FAF7F2', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, paddingTop: 50, background: '#F3EADA', overflow: 'hidden' }}>
           <div style={{ transform: 'scale(0.78)', transformOrigin: 'top center', width: '128.2%', marginLeft: '-14.1%' }}>
             {children}
           </div>

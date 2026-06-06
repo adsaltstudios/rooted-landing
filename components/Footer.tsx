@@ -10,13 +10,13 @@ export function Footer() {
             <Image src="/assets/lamb-mark.png" alt="" width={30} height={30} style={{ filter: 'brightness(0) invert(1)' }} />
             <span>Rooted</span>
           </div>
-          <p>The calm command center for new parents. Two patients, one app, the whole household held.</p>
+          <p>The calm home base for new parents. Two patients, one app, the whole household held.</p>
         </div>
         <div className="footer-col">
           <h4>Product</h4>
           <ul>
-            <li><a href="#two-patient">For Mom</a></li>
-            <li><a href="#two-patient">For Baby</a></li>
+            <li><a href="#for-mom">For Mom</a></li>
+            <li><a href="#for-baby">For Baby</a></li>
             <li><a href="#handoff">Co-parents</a></li>
             <li><a href="#faq">FAQ</a></li>
           </ul>

@@ -16,9 +16,9 @@ export function Values() {
       icon: (
         <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
           <circle cx="17" cy="18" r="6" stroke="#2F4A37" strokeWidth="2"/>
-          <circle cx="31" cy="18" r="6" stroke="#C9904A" strokeWidth="2"/>
+          <circle cx="31" cy="18" r="6" stroke="#B0613D" strokeWidth="2"/>
           <path d="M7 40 c0-6 4-11 10-11 s10 5 10 11" stroke="#2F4A37" strokeWidth="2" strokeLinecap="round" fill="none"/>
-          <path d="M21 40 c0-6 4-11 10-11 s10 5 10 11" stroke="#C9904A" strokeWidth="2" strokeLinecap="round" fill="none"/>
+          <path d="M21 40 c0-6 4-11 10-11 s10 5 10 11" stroke="#B0613D" strokeWidth="2" strokeLinecap="round" fill="none"/>
         </svg>
       ),
     },
@@ -27,7 +27,7 @@ export function Values() {
       body: "Soft, never clinical. Calm prompts instead of alarms. The voice of a friend who happens to be a doula, not another to-do list.",
       icon: (
         <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-          <path d="M24 6 C 16 12, 12 18, 12 24 C 18 24, 24 18, 24 6 Z" fill="#A6B68C"/>
+          <path d="M24 6 C 16 12, 12 18, 12 24 C 18 24, 24 18, 24 6 Z" fill="#889B6E"/>
           <path d="M24 6 C 32 12, 36 18, 36 24 C 30 24, 24 18, 24 6 Z" fill="#7E9168"/>
           <line x1="24" y1="6" x2="24" y2="42" stroke="#2F4A37" strokeWidth="1.6" strokeLinecap="round"/>
         </svg>

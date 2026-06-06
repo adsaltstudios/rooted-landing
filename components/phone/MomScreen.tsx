@@ -5,8 +5,8 @@ import { AppHeader, RCard, RRing, RChip, RSectionTitle, RButton, Icon, FONT_DISP
 
 function MedRow({ icon, name, detail, time, done }: { icon: string; name: string; detail: string; time: string; done?: boolean }) {
   return (
-    <div style={{ background: '#FFFFFF', borderRadius: 14, padding: '14px 16px', display: 'flex', alignItems: 'center', gap: 14, boxShadow: SHADOW_SM, opacity: done ? 0.6 : 1 }}>
-      <div style={{ width: 38, height: 38, borderRadius: 12, background: '#EAF0DF', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{ background: '#F7EFDF', borderRadius: 14, padding: '14px 16px', display: 'flex', alignItems: 'center', gap: 14, boxShadow: SHADOW_SM, opacity: done ? 0.6 : 1 }}>
+      <div style={{ width: 38, height: 38, borderRadius: 12, background: '#DFE7CC', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <Icon name={icon} size={18} color={R_GREEN} />
       </div>
       <div style={{ flex: 1 }}>
@@ -27,7 +27,7 @@ export function MomScreen() {
       />
       <div style={{ padding: '0 20px' }}>
         <RCard tone="white" padding={18} style={{ display: 'flex', gap: 18, alignItems: 'center' }}>
-          <RRing value={0.65} size={64} label="65%" color="#A6B68C" />
+          <RRing value={0.65} size={64} label="65%" color="#889B6E" />
           <div style={{ flex: 1 }}>
             <div style={{ fontFamily: FONT_BODY, fontSize: 12, fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase', color: R_TEXT_SOFT }}>Today</div>
             <div style={{ fontFamily: FONT_DISPLAY, fontSize: 19, fontWeight: 500, color: R_TEXT, marginTop: 2 }}>You&apos;re moving gently.</div>
@@ -47,8 +47,8 @@ export function MomScreen() {
           </div>
           <div style={{ display: 'flex', gap: 6 }}>
             {([1,1,1,1,1,0.5,0,0,0,0] as number[]).map((f, i) => (
-              <div key={i} style={{ flex: 1, height: 36, background: '#EFE7D8', borderRadius: 6, position: 'relative', overflow: 'hidden' }}>
-                <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: `${f * 100}%`, background: '#A6B68C' }} />
+              <div key={i} style={{ flex: 1, height: 36, background: '#E2D5BD', borderRadius: 6, position: 'relative', overflow: 'hidden' }}>
+                <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: `${f * 100}%`, background: '#889B6E' }} />
               </div>
             ))}
           </div>

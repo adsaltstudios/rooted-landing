@@ -17,11 +17,11 @@ export default function OpengraphImage() {
           justifyContent: 'center',
           padding: '96px',
           background: '#2F4A37',
-          color: '#FAF7F2',
+          color: '#F3EADA',
           fontFamily: 'sans-serif',
         }}
       >
-        <div style={{ display: 'flex', fontSize: 28, letterSpacing: 8, color: '#C4D0AE', marginBottom: 30 }}>
+        <div style={{ display: 'flex', fontSize: 28, letterSpacing: 8, color: '#A7B98C', marginBottom: 30 }}>
           ROOTED
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', fontSize: 110, fontWeight: 800, lineHeight: 1.02, letterSpacing: -4 }}>
@@ -29,7 +29,7 @@ export default function OpengraphImage() {
           <div>held together.</div>
         </div>
         <div style={{ display: 'flex', fontSize: 36, color: 'rgba(250,247,242,0.85)', marginTop: 40, maxWidth: 880, lineHeight: 1.3 }}>
-          {'The calm command center for new parents. Track Mom\'s recovery and Baby\'s care, side by side.'}
+          {'A calm home for the fourth trimester. Track Mom\'s recovery and Baby\'s care, side by side.'}
         </div>
       </div>
     ),

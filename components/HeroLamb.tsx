@@ -1,78 +1,51 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import Image from 'next/image';
 import { EmailForm } from './EmailForm';
-
-function scrollToSection(id: string) {
-  const el = document.querySelector(id);
-  if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 70, behavior: 'smooth' });
-}
+import { LambMark } from './LambMark';
+import { PhoneFrame } from './phone/PhoneFrame';
+import { TodayScreen } from './phone/TodayScreen';
+import { scrollToId } from '@/lib/scroll';
 
 export function HeroLamb() {
-  const ref = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    requestAnimationFrame(() => ref.current?.classList.add('entered'));
-  }, []);
-
-  const headline = 'Postpartum, held together.';
-  const m = headline.match(/^(.*?)(held together\.?|together\.?)$/i);
-  const headLead = m ? m[1] : headline;
-  const headTail = m ? m[2] : '';
-
   return (
-    <section className="hero hero-lamb" ref={ref}>
-      <div className="hero-lamb-bg" aria-hidden="true">
-        <div className="halo halo-1" />
-        <div className="halo halo-2" />
-        <div className="halo halo-3" />
-        <svg className="leaf leaf-tl" viewBox="0 0 64 64" aria-hidden="true">
-          <path d="M32 6 C20 16 14 30 14 46 C28 46 40 30 32 6 Z" fill="#A6B68C" opacity="0.55"/>
-          <line x1="32" y1="6" x2="20" y2="46" stroke="#7E9168" strokeWidth="1.4" strokeLinecap="round" opacity="0.6"/>
-        </svg>
-        <svg className="leaf leaf-tr" viewBox="0 0 64 64" aria-hidden="true">
-          <path d="M32 6 C44 16 50 30 50 46 C36 46 24 30 32 6 Z" fill="#B9C39A" opacity="0.5"/>
-          <line x1="32" y1="6" x2="44" y2="46" stroke="#7E9168" strokeWidth="1.4" strokeLinecap="round" opacity="0.6"/>
-        </svg>
-        <svg className="leaf leaf-bl" viewBox="0 0 64 64" aria-hidden="true">
-          <path d="M32 6 C20 16 14 30 14 46 C28 46 40 30 32 6 Z" fill="#7E9168" opacity="0.45"/>
-        </svg>
-        <svg className="leaf leaf-br" viewBox="0 0 64 64" aria-hidden="true">
-          <path d="M32 6 C44 16 50 30 50 46 C36 46 24 30 32 6 Z" fill="#A6B68C" opacity="0.55"/>
-        </svg>
-      </div>
+    <section className="hero hero-lamb">
+      <div className="hero-glow" aria-hidden="true" />
 
-      <div className="hero-lamb-content">
-        <div className="hero-eyebrow hero-eyebrow-dark">
-          <span className="dot" /> Waitlist now open
+      <div className="hero-inner">
+        <div className="hero-copy">
+          <div className="hero-eyebrow hero-eyebrow-dark">
+            <span className="dot" /> Waitlist now open
+          </div>
+
+          <h1 className="hero-title hero-title-dark">
+            Postpartum,<br />
+            <em>held together.</em>
+          </h1>
+
+          <p className="hero-sub hero-sub-dark">
+            Rooted is the calm home base for new parents. Track Mom&apos;s recovery and Baby&apos;s care, side by side, so neither of you has to hold it all in your head.
+          </p>
+
+          <div className="hero-join">
+            <EmailForm id="hero-email-form" ctaLabel="Hold my spot" />
+            <button className="hero-see-link" onClick={() => scrollToId('#features')}>
+              See how it works
+            </button>
+          </div>
         </div>
 
-        <div className="hero-lamb-mark-wrap">
-          <div className="hero-lamb-glow" aria-hidden="true" />
-          <Image
-            className="hero-lamb-mark"
-            src="/assets/lamb-mark.png"
-            alt="Rooted lamb mark"
-            width={340}
-            height={340}
-          />
-        </div>
-
-        <h1 className="hero-title hero-title-dark">
-          {headLead}
-          {headTail && <em>{headTail}</em>}
-        </h1>
-        <p className="hero-sub hero-sub-dark">
-          Rooted is the calm command center for new parents. Track Mom&apos;s recovery and Baby&apos;s care, side by side, so neither of you has to hold it all in your head.
-        </p>
-        <div className="hero-join">
-          <EmailForm id="hero-email-form" ctaLabel="Join the waitlist" />
-          <button className="hero-see-link" onClick={() => scrollToSection('#features')}>
-            See how it works
-          </button>
+        <div className="hero-showcase" aria-hidden="true">
+          <div className="hero-phone-rise">
+            <div className="hero-phone">
+              <PhoneFrame scale={1}>
+                <TodayScreen />
+              </PhoneFrame>
+            </div>
+          </div>
+          <LambMark className="hero-lamb-badge" size={128} />
         </div>
       </div>
+
       <div className="hero-scroll-cue hero-scroll-cue-dark" />
     </section>
   );
