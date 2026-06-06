@@ -4,17 +4,17 @@ import { useState } from 'react';
 
 const items = [
   { q: "When will Rooted be available?",
-    a: "Rooted is in private beta with a small group of families today. The public waitlist opens access in waves through 2026 — earliest sign-ups go first." },
+    a: "Rooted is in private beta with a small group of families today. The public waitlist opens access in waves through 2026. Earliest sign-ups go first." },
   { q: "How much will it cost?",
-    a: "We're still figuring that out — and that's part of what the waitlist is for. Likely a small monthly subscription per household, with a meaningful free window in the first weeks postpartum. Waitlist members will get founding-member pricing." },
+    a: "We're still figuring that out, and that's part of what the waitlist is for. Likely a small monthly subscription per household, with a meaningful free window in the first weeks postpartum. Waitlist members will get founding-member pricing." },
   { q: "Is it for expecting parents too?",
-    a: "Yes. You can set Rooted up before baby arrives — appointments, hospital bag, medication plan — and it switches into postpartum mode the day you log baby's birth." },
+    a: "Yes. You can set Rooted up before baby arrives (appointments, hospital bag, medication plan), and it switches into postpartum mode the day you log baby's birth." },
   { q: "Does my partner need their own account?",
-    a: "Yes — and that's the whole point. Each co-parent has their own login, sees the same shared household, and gets the calm briefing when the other one needs to rest." },
+    a: "Yes, and that's the whole point. Each co-parent has their own login, sees the same shared household, and gets the calm briefing when the other one needs to rest." },
   { q: "Is my data private?",
     a: "Always. Your household data is yours. We don't sell it, we don't train models on it, and we'll never share it with insurers or advertisers. Encrypted at rest and in transit." },
   { q: "Is this a replacement for medical advice?",
-    a: "No. Rooted is a household tool, not a clinician. We're built to support what your OB, midwife, pediatrician, and lactation consultant already tell you — not replace them." },
+    a: "No. Rooted is a household tool, not a clinician. We're built to support what your OB, midwife, pediatrician, and lactation consultant already tell you, not replace them." },
 ];
 
 export function FAQ() {

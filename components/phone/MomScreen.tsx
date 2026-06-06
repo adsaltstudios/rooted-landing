@@ -23,7 +23,7 @@ export function MomScreen() {
     <div style={{ paddingBottom: 100 }}>
       <AppHeader
         greeting="Day 9 postpartum"
-        title={<>Sarah&apos;s <em style={{ fontStyle: 'italic', color: R_GREEN }}>recovery</em></>}
+        title={<>Sarah&apos;s <em style={{ fontStyle: 'normal', fontWeight: 800, color: R_GREEN }}>recovery</em></>}
       />
       <div style={{ padding: '0 20px' }}>
         <RCard tone="white" padding={18} style={{ display: 'flex', gap: 18, alignItems: 'center' }}>
@@ -81,7 +81,7 @@ export function MomScreen() {
             <div style={{ fontFamily: FONT_DISPLAY, fontSize: 19, fontWeight: 500, color: R_TEXT }}>Pelvic floor check-in</div>
           </div>
           <div style={{ fontFamily: FONT_BODY, fontSize: 13, color: R_TEXT_MUTED, lineHeight: 1.5, marginBottom: 12 }}>
-            Two gentle minutes — breathe and notice. No reps, no pressure.
+            Two gentle minutes: breathe and notice. No reps, no pressure.
           </div>
           <RButton variant="primary" size="sm">Start</RButton>
         </RCard>

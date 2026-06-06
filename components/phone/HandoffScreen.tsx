@@ -38,7 +38,7 @@ export function HandoffScreen() {
     <div style={{ paddingBottom: 100 }}>
       <AppHeader
         greeting="Saturday, 4:30 pm"
-        title={<>Hand off to <em style={{ fontStyle: 'italic', color: R_GREEN }}>Marcus</em></>}
+        title={<>Hand off to <em style={{ fontStyle: 'normal', fontWeight: 800, color: R_GREEN }}>Marcus</em></>}
       />
       <div style={{ padding: '0 20px' }}>
         <div style={{ fontFamily: FONT_BODY, fontSize: 14, color: R_TEXT_MUTED, lineHeight: 1.6, marginBottom: 18 }}>
@@ -58,7 +58,7 @@ export function HandoffScreen() {
           <div style={{ fontFamily: FONT_BODY, fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: R_TEXT_SOFT, marginBottom: 8 }}>Note from Sarah</div>
           <RCard tone="white" padding={18}>
             <div style={{ fontFamily: FONT_DISPLAY, fontSize: 17, fontWeight: 500, color: R_TEXT, fontStyle: 'italic', lineHeight: 1.5 }}>
-              &ldquo;She fussed a little after the last feed — I think she might want to be held upright for a bit. I&apos;ll be back at 6.&rdquo;
+              &ldquo;She fussed a little after the last feed. I think she might want to be held upright for a bit. I&apos;ll be back at 6.&rdquo;
             </div>
             <div style={{ fontFamily: FONT_BODY, fontSize: 12, color: R_TEXT_SOFT, marginTop: 10, letterSpacing: '0.04em' }}>4:18 pm</div>
           </RCard>

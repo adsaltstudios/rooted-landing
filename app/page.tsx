@@ -9,7 +9,6 @@ import { TwoPatient } from '@/components/TwoPatient';
 import { DeviceMarquee } from '@/components/DeviceMarquee';
 import { FeatureDive } from '@/components/FeatureDive';
 import { HandoffSpotlight } from '@/components/HandoffSpotlight';
-import { Testimonials } from '@/components/Testimonials';
 import { FounderNote } from '@/components/FounderNote';
 import { FAQ } from '@/components/FAQ';
 import { FinalCTA } from '@/components/FinalCTA';
@@ -41,14 +40,13 @@ export default function Home() {
   return (
     <>
       <Nav onJoin={onJoin} />
-      <HeroLamb onJoin={onJoin} />
+      <HeroLamb />
       <SubHero onJoin={onJoin} />
       <Values />
       <TwoPatient />
       <DeviceMarquee />
       <FeatureDive />
       <HandoffSpotlight />
-      <Testimonials />
       <FounderNote />
       <FAQ />
       <FinalCTA />

@@ -30,7 +30,7 @@ function ScreenRow({ prefix }: { prefix: string }) {
 export function DeviceMarquee() {
   return (
     <section className="device-strip-section">
-      <div style={{ maxWidth: 760, margin: '0 auto', padding: '0 24px' }}>
+      <div style={{ maxWidth: 1180, margin: '0 auto', padding: '0 24px' }}>
         <div className="section-label">Inside the app</div>
         <h2 className="section-title">Calm, organized, designed for two.</h2>
         <p className="section-lede">Soft palette. Generous spacing. One-tap logging. Built so an exhausted parent at 3am can still find what matters in seconds.</p>

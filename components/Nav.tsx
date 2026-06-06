@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 function scrollToSection(id: string) {
   const el = document.querySelector(id);
@@ -23,7 +24,7 @@ export function Nav({ onJoin }: { onJoin: () => void }) {
   return (
     <nav className={cls}>
       <div className="nav-left">
-        <a href="#" className="nav-logo nav-logo-v2" aria-label="Rooted home">
+        <Link href="/" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="nav-logo nav-logo-v2" aria-label="Rooted home">
           {scrolled ? (
             <Image className="logo-lockup" src="/assets/horizontal-lockup.png" alt="Rooted" width={160} height={34} style={{ height: 34, width: 'auto' }} />
           ) : (
@@ -32,16 +33,15 @@ export function Nav({ onJoin }: { onJoin: () => void }) {
               <span className="logo-word">Rooted</span>
             </>
           )}
-        </a>
+        </Link>
         <div className="nav-links">
           <button className="nav-link" onClick={() => scrollToSection('#two-patient')}>For Mom</button>
-          <button className="nav-link" onClick={() => scrollToSection('#features')}>For Baby</button>
+          <button className="nav-link" onClick={() => scrollToSection('#two-patient')}>For Baby</button>
           <button className="nav-link" onClick={() => scrollToSection('#handoff')}>Co-parents</button>
           <button className="nav-link" onClick={() => scrollToSection('#faq')}>FAQ</button>
         </div>
       </div>
       <div className="nav-right">
-        <button className="nav-login">Sign in</button>
         <button className={`btn-pill ${scrolled ? 'primary' : 'light'}`} onClick={onJoin}>
           Join the waitlist
         </button>

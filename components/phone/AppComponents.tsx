@@ -14,8 +14,8 @@ export const R_TEXT_MUTED = '#5A6B5F';
 export const R_TEXT_SOFT = '#8B9890';
 export const R_BORDER = '#E5DCC9';
 
-export const FONT_DISPLAY = "'Cormorant Garamond', Garamond, Georgia, serif";
-export const FONT_BODY = "'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif";
+export const FONT_DISPLAY = 'var(--font-display)';
+export const FONT_BODY = 'var(--font-body)';
 
 export const SHADOW_SM = '0 1px 2px rgba(47,74,55,0.04), 0 1px 3px rgba(47,74,55,0.06)';
 export const SHADOW_MD = '0 4px 12px rgba(47,74,55,0.06), 0 2px 4px rgba(47,74,55,0.04)';

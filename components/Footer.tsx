@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 export function Footer() {
   return (
@@ -15,26 +16,24 @@ export function Footer() {
           <h4>Product</h4>
           <ul>
             <li><a href="#two-patient">For Mom</a></li>
-            <li><a href="#features">For Baby</a></li>
+            <li><a href="#two-patient">For Baby</a></li>
             <li><a href="#handoff">Co-parents</a></li>
-            <li><a href="#faq">Roadmap</a></li>
+            <li><a href="#faq">FAQ</a></li>
           </ul>
         </div>
         <div className="footer-col">
           <h4>Company</h4>
           <ul>
             <li><a href="#founder">Our story</a></li>
-            <li><a href="#two-patient">Why postpartum</a></li>
-            <li><a href="mailto:hello@rootedapp.co">Press</a></li>
+            <li><a href="#two-patient">Two patients</a></li>
             <li><a href="mailto:hello@rootedapp.co">Contact</a></li>
           </ul>
         </div>
         <div className="footer-col">
           <h4>Support</h4>
           <ul>
-            <li><a href="mailto:hello@rootedapp.co">Help center</a></li>
-            <li><a href="#">Privacy</a></li>
-            <li><a href="#">Terms</a></li>
+            <li><Link href="/privacy">Privacy</Link></li>
+            <li><Link href="/terms">Terms</Link></li>
             <li><a href="mailto:hello@rootedapp.co">hello@rootedapp.co</a></li>
           </ul>
         </div>

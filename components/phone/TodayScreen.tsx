@@ -32,7 +32,7 @@ export function TodayScreen() {
     <div style={{ paddingBottom: 100 }}>
       <AppHeader
         greeting="Saturday · Day 9 postpartum"
-        title={<span>Good morning,<br /><em style={{ fontStyle: 'italic', color: R_GREEN }}>Sarah</em></span>}
+        title={<span>Good morning,<br /><em style={{ fontStyle: 'normal', fontWeight: 800, color: R_GREEN }}>Sarah</em></span>}
         right={
           <div style={{ width: 40, height: 40, borderRadius: 999, background: R_CREAM, border: '1px solid ' + R_BORDER, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: FONT_DISPLAY, fontSize: 16, color: R_GREEN, fontWeight: 600 }}>S</div>
         }
