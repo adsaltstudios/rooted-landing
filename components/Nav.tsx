@@ -3,14 +3,19 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { scrollToId, scrollToTop } from '@/lib/scroll';
 
-function scrollToSection(id: string) {
-  const el = document.querySelector(id);
-  if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 70, behavior: 'smooth' });
-}
+const LINKS = [
+  { label: 'For Mom', id: '#for-mom' },
+  { label: 'For Baby', id: '#for-baby' },
+  { label: 'Co-parents', id: '#handoff' },
+  { label: 'FAQ', id: '#faq' },
+];
 
 export function Nav({ onJoin }: { onJoin: () => void }) {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeId, setActiveId] = useState<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -19,12 +24,39 @@ export function Nav({ onJoin }: { onJoin: () => void }) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const cls = `nav nav-v2 ${scrolled ? 'is-scrolled' : 'is-light'}`;
+  // Scroll-spy: highlight the nav link for the section crossing the viewport middle.
+  useEffect(() => {
+    if (!('IntersectionObserver' in window)) return;
+    const sections = LINKS
+      .map((l) => document.getElementById(l.id.slice(1)))
+      .filter((el): el is HTMLElement => el !== null);
+    if (!sections.length) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        const top = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (top) setActiveId('#' + top.target.id);
+      },
+      { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+    );
+    sections.forEach((s) => io.observe(s));
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setMenuOpen(false); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
+
+  const cls = `nav nav-v2 ${scrolled ? 'is-scrolled' : 'is-top'} ${menuOpen ? 'menu-open' : ''}`;
+  const goto = (id: string) => { setMenuOpen(false); scrollToId(id); };
 
   return (
     <nav className={cls}>
       <div className="nav-left">
-        <Link href="/" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="nav-logo nav-logo-v2" aria-label="Rooted home">
+        <Link href="/" onClick={(e) => { e.preventDefault(); setMenuOpen(false); scrollToTop(); }} className="nav-logo nav-logo-v2" aria-label="Rooted home">
           {scrolled ? (
             <Image className="logo-lockup" src="/assets/horizontal-lockup.png" alt="Rooted" width={160} height={34} style={{ height: 34, width: 'auto' }} />
           ) : (
@@ -35,16 +67,41 @@ export function Nav({ onJoin }: { onJoin: () => void }) {
           )}
         </Link>
         <div className="nav-links">
-          <button className="nav-link" onClick={() => scrollToSection('#two-patient')}>For Mom</button>
-          <button className="nav-link" onClick={() => scrollToSection('#two-patient')}>For Baby</button>
-          <button className="nav-link" onClick={() => scrollToSection('#handoff')}>Co-parents</button>
-          <button className="nav-link" onClick={() => scrollToSection('#faq')}>FAQ</button>
+          {LINKS.map((l) => (
+            <button
+              key={l.id}
+              className={`nav-link ${activeId === l.id ? 'is-active' : ''}`}
+              aria-current={activeId === l.id ? 'true' : undefined}
+              onClick={() => scrollToId(l.id)}
+            >{l.label}</button>
+          ))}
         </div>
       </div>
+
       <div className="nav-right">
-        <button className={`btn-pill ${scrolled ? 'primary' : 'light'}`} onClick={onJoin}>
-          Join the waitlist
+        <button className="btn-pill primary nav-cta" onClick={onJoin}>Hold my spot</button>
+        <button
+          type="button"
+          className="nav-burger"
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-nav"
+          onClick={() => setMenuOpen((o) => !o)}
+        >
+          <span className="nav-burger-box"><span className="nav-burger-inner" /></span>
         </button>
+      </div>
+
+      <div id="mobile-nav" className="nav-mobile" inert={!menuOpen || undefined}>
+        {LINKS.map((l) => (
+          <button
+            key={l.id}
+            className={`nav-mobile-link ${activeId === l.id ? 'is-active' : ''}`}
+            aria-current={activeId === l.id ? 'true' : undefined}
+            onClick={() => goto(l.id)}
+          >{l.label}</button>
+        ))}
+        <button className="btn-pill primary nav-mobile-cta" onClick={() => { setMenuOpen(false); onJoin(); }}>Hold my spot</button>
       </div>
     </nav>
   );

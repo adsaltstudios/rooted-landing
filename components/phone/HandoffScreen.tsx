@@ -14,9 +14,9 @@ function HandoffCell({ label, value, sub, tone }: { label: string; value: string
 }
 
 function NeedRow({ tone, title, items }: { tone: 'mom' | 'baby'; title: string; items: string[] }) {
-  const dot = tone === 'mom' ? '#6E8E65' : '#C9904A';
+  const dot = tone === 'mom' ? '#6E8E65' : '#B0613D';
   return (
-    <div style={{ background: '#FFFFFF', borderRadius: 16, padding: 16, boxShadow: SHADOW_SM }}>
+    <div style={{ background: '#F7EFDF', borderRadius: 16, padding: 16, boxShadow: SHADOW_SM }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
         <span style={{ width: 6, height: 6, borderRadius: 999, background: dot }} />
         <div style={{ fontFamily: FONT_DISPLAY, fontSize: 17, fontWeight: 600, color: R_TEXT }}>{title}</div>

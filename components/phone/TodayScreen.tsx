@@ -4,7 +4,7 @@ import React from 'react';
 import { AppHeader, RCard, RRing, RSectionTitle, Icon, FONT_DISPLAY, FONT_BODY, R_GREEN, R_TEXT, R_TEXT_MUTED, R_TEXT_SOFT, R_CREAM, R_BORDER, SHADOW_SM } from './AppComponents';
 
 function QuickLog({ icon, label, tone }: { icon: string; label: string; tone: 'beige' | 'cream' }) {
-  const bg = tone === 'beige' ? '#EFDCC4' : '#F4E9DB';
+  const bg = tone === 'beige' ? '#DFC9A9' : '#EAD9C0';
   return (
     <div style={{ background: bg, borderRadius: 16, padding: 14, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, cursor: 'pointer' }}>
       <Icon name={icon} size={22} color={R_GREEN} />
@@ -14,9 +14,9 @@ function QuickLog({ icon, label, tone }: { icon: string; label: string; tone: 'b
 }
 
 function PriorityRow({ time, tone, title, sub }: { time: string; tone: 'mom' | 'baby'; title: string; sub: string }) {
-  const dotColor = tone === 'mom' ? '#6E8E65' : '#C9904A';
+  const dotColor = tone === 'mom' ? '#6E8E65' : '#B0613D';
   return (
-    <div style={{ background: '#FFFFFF', borderRadius: 14, padding: '14px 16px', display: 'flex', alignItems: 'center', gap: 14, boxShadow: SHADOW_SM }}>
+    <div style={{ background: '#F7EFDF', borderRadius: 14, padding: '14px 16px', display: 'flex', alignItems: 'center', gap: 14, boxShadow: SHADOW_SM }}>
       <div style={{ width: 8, height: 40, borderRadius: 999, background: dotColor }} />
       <div style={{ flex: 1 }}>
         <div style={{ fontFamily: FONT_BODY, fontSize: 15, fontWeight: 600, color: R_TEXT }}>{title}</div>
@@ -39,7 +39,7 @@ export function TodayScreen() {
       />
       <div style={{ padding: '0 20px', display: 'flex', flexDirection: 'column', gap: 12 }}>
         <RCard tone="cream" padding={20} style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
-          <RRing value={0.65} size={68} label="65%" sublabel="Today" color="#A6B68C" />
+          <RRing value={0.65} size={68} label="65%" sublabel="Today" color="#889B6E" />
           <div style={{ flex: 1 }}>
             <div style={{ fontFamily: FONT_BODY, fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: R_TEXT_SOFT }}>Mom</div>
             <div style={{ fontFamily: FONT_DISPLAY, fontSize: 22, fontWeight: 500, color: R_TEXT, marginTop: 2 }}>Sarah, day 9</div>
@@ -48,7 +48,7 @@ export function TodayScreen() {
           <Icon name="chevron-right" color={R_TEXT_SOFT} size={20} />
         </RCard>
         <RCard tone="beige" padding={20} style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
-          <RRing value={0.8} size={68} label="6×" sublabel="Feeds" color="#C9904A" track="#F4E2CE" />
+          <RRing value={0.8} size={68} label="6×" sublabel="Feeds" color="#B0613D" track="#ECD6B6" />
           <div style={{ flex: 1 }}>
             <div style={{ fontFamily: FONT_BODY, fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#8E6B3F' }}>Baby</div>
             <div style={{ fontFamily: FONT_DISPLAY, fontSize: 22, fontWeight: 500, color: R_TEXT, marginTop: 2 }}>Iris, 9 days</div>
@@ -77,7 +77,7 @@ export function TodayScreen() {
       <div style={{ padding: '28px 20px 0' }}>
         <RCard tone="sage">
           <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-            <div style={{ width: 44, height: 44, borderRadius: 14, background: '#FAF7F2', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ width: 44, height: 44, borderRadius: 14, background: '#F3EADA', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Icon name="users" color={R_GREEN} size={22} />
             </div>
             <div style={{ flex: 1 }}>

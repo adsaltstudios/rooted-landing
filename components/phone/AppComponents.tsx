@@ -2,17 +2,19 @@
 
 import * as LucideIcons from 'lucide-react';
 
+export { LambMark } from '../LambMark';
+
 // Design tokens (matching the design system)
 export const R_GREEN = '#2F4A37';
 export const R_GREEN_DEEP = '#1F3326';
-export const R_SAGE = '#A6B68C';
-export const R_CREAM = '#F4E9DB';
-export const R_BEIGE = '#EFDCC4';
-export const R_NEUTRAL = '#FAF7F2';
+export const R_SAGE = '#889B6E';
+export const R_CREAM = '#EAD9C0';
+export const R_BEIGE = '#DFC9A9';
+export const R_NEUTRAL = '#F3EADA';
 export const R_TEXT = '#1F2A23';
 export const R_TEXT_MUTED = '#5A6B5F';
-export const R_TEXT_SOFT = '#8B9890';
-export const R_BORDER = '#E5DCC9';
+export const R_TEXT_SOFT = '#5E6A60';
+export const R_BORDER = '#D8C8AE';
 
 export const FONT_DISPLAY = 'var(--font-display)';
 export const FONT_BODY = 'var(--font-body)';
@@ -44,16 +46,6 @@ export function Icon({
   return <LucideIcon size={size} strokeWidth={stroke} color={color} style={{ display: 'inline-block', ...style }} />;
 }
 
-export function LambMark({ size = 56 }: { size?: number }) {
-  return (
-    <img
-      src="/assets/lamb-mark.png"
-      alt=""
-      style={{ width: size, height: size, objectFit: 'contain', display: 'block' }}
-    />
-  );
-}
-
 export function RCard({
   children,
   tone = 'cream',
@@ -68,7 +60,7 @@ export function RCard({
   onClick?: () => void;
 }) {
   const tones: Record<string, string> = {
-    cream: R_CREAM, beige: R_BEIGE, sage: '#EDF1E2', neutral: R_NEUTRAL, white: '#FFFFFF',
+    cream: R_CREAM, beige: R_BEIGE, sage: '#DEE6CB', neutral: R_NEUTRAL, white: '#F7EFDF',
   };
   return (
     <div
@@ -94,8 +86,8 @@ export function RChip({
   style?: React.CSSProperties;
 }) {
   const tones: Record<string, { bg: string; fg: string; dot: string | null }> = {
-    sage:    { bg: '#EAF0DF', fg: '#3A4D34', dot: '#6E8E65' },
-    warm:    { bg: '#F8EBD7', fg: '#6B4925', dot: '#C9904A' },
+    sage:    { bg: '#DFE7CC', fg: '#3A4D34', dot: '#6E8E65' },
+    warm:    { bg: '#EFD8BF', fg: '#6B4925', dot: '#B0613D' },
     danger:  { bg: '#F4DDD4', fg: '#8E3F2E', dot: '#B5604F' },
     neutral: { bg: '#E2E8EA', fg: '#34424B', dot: '#6B7F8E' },
     mom:     { bg: R_CREAM,   fg: R_GREEN,   dot: null },
@@ -117,7 +109,7 @@ export function RRing({
   label,
   sublabel,
   color = R_SAGE,
-  track = '#EFE7D8',
+  track = '#E2D5BD',
 }: {
   value?: number;
   size?: number;
@@ -201,7 +193,7 @@ export function RButton({
   };
   const variants: Record<string, React.CSSProperties> = {
     primary: { background: R_GREEN, color: R_NEUTRAL },
-    secondary: { background: '#EAF0DF', color: R_GREEN },
+    secondary: { background: '#DFE7CC', color: R_GREEN },
     ghost: { background: 'transparent', color: R_GREEN },
     cream: { background: R_CREAM, color: R_GREEN, boxShadow: 'inset 0 0 0 1px ' + R_BORDER },
   };

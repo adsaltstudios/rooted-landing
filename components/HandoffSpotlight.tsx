@@ -16,7 +16,7 @@ export function HandoffSpotlight() {
             When one of you needs to rest, the other gets a calm briefing: last feed, last diaper, next med, what Mom needs, what Baby needs. No briefing required.
           </p>
         </div>
-        <div className="handoff-visual reveal" data-reveal="true">
+        <div className="handoff-visual reveal" data-reveal="true" inert={true}>
           <div className="device-stage">
             <PhoneFrame scale={0.92}><HandoffScreen /></PhoneFrame>
           </div>
