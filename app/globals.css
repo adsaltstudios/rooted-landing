@@ -466,6 +466,10 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
    EMAIL FORM
    ============================================ */
 .email-form { display: flex; align-items: center; gap: 8px; max-width: 480px; width: 100%; background: var(--light-neutral); border-radius: 999px; padding: 7px 7px 7px 22px; border: 1.5px solid var(--border); transition: border-color 240ms var(--ease), box-shadow 240ms var(--ease); margin: 0 auto; }
+/* Honeypot field — visually gone for humans, still in the DOM for bots to trip.
+   Deliberately not display:none (some bots skip those) and removed from flow so
+   it never affects the form's flex layout. */
+.hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
 .email-form:focus-within { border-color: var(--forest-green); box-shadow: 0 0 0 4px rgba(47,74,55,0.08); }
 .email-form input { flex: 1; background: transparent; border: none; outline: none; font-family: var(--font-body); font-size: var(--text-base); color: var(--text); padding: 12px 0; min-width: 0; }
 .email-form input::placeholder { color: var(--text-soft); }
