@@ -17,9 +17,12 @@ export function EmailForm({ id, ctaLabel = 'Hold my spot' }: { id?: string; ctaL
     if (submitted) successRef.current?.focus();
   }, [submitted]);
 
-  const submit = async (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const value = email.trim();
+    // Read the honeypot straight from the DOM so anything a bot typed into it
+    // rides along on the JSON path too (the no-JS path posts it as form data).
+    const honeypot = String(new FormData(e.currentTarget).get('company') ?? '');
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
       setError('Please enter a valid email.');
       return;
@@ -30,7 +33,7 @@ export function EmailForm({ id, ctaLabel = 'Hold my spot' }: { id?: string; ctaL
       const res = await fetch('/api/waitlist', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: value }),
+        body: JSON.stringify({ email: value, company: honeypot }),
       });
       if (res.status === 409) {
         // Already on the list: reassure, don't alarm.
@@ -71,6 +74,16 @@ export function EmailForm({ id, ctaLabel = 'Hold my spot' }: { id?: string; ctaL
   return (
     <>
       <form className="email-form" onSubmit={submit} id={id} action="/api/waitlist" method="post">
+        {/* Honeypot: hidden from people and assistive tech; only bots fill it.
+            A non-empty value is treated as spam and silently dropped server-side. */}
+        <input
+          type="text"
+          name="company"
+          className="hp-field"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+        />
         <label htmlFor={inputId} className="sr-only">Email address</label>
         <input
           id={inputId}
