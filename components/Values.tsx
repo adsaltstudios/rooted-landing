@@ -1,54 +1,13 @@
 export function Values() {
-  const items = [
-    {
-      title: 'Care together.',
-      body: "Two patients, one app. Mom's recovery and Baby's care live side by side, never split between sticky notes and group texts.",
-      icon: (
-        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-          <path d="M24 42 C 12 34, 6 25, 6 17 a 9 9 0 0 1 18 0 a 9 9 0 0 1 18 0 c 0 8 -6 17 -18 25 z"
-            stroke="#6E8E65" strokeWidth="2" strokeLinejoin="round" fill="none"/>
-        </svg>
-      ),
-    },
-    {
-      title: 'Grow together.',
-      body: 'A shared view of what just happened, what comes next, and what each of you noticed today. No briefing required.',
-      icon: (
-        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-          <circle cx="17" cy="18" r="6" stroke="#2F4A37" strokeWidth="2"/>
-          <circle cx="31" cy="18" r="6" stroke="#B0613D" strokeWidth="2"/>
-          <path d="M7 40 c0-6 4-11 10-11 s10 5 10 11" stroke="#2F4A37" strokeWidth="2" strokeLinecap="round" fill="none"/>
-          <path d="M21 40 c0-6 4-11 10-11 s10 5 10 11" stroke="#B0613D" strokeWidth="2" strokeLinecap="round" fill="none"/>
-        </svg>
-      ),
-    },
-    {
-      title: 'Rooted in love.',
-      body: "Soft, never clinical. Calm prompts instead of alarms. The voice of a friend who happens to be a doula, not another to-do list.",
-      icon: (
-        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-          <path d="M24 6 C 16 12, 12 18, 12 24 C 18 24, 24 18, 24 6 Z" fill="#889B6E"/>
-          <path d="M24 6 C 32 12, 36 18, 36 24 C 30 24, 24 18, 24 6 Z" fill="#7E9168"/>
-          <line x1="24" y1="6" x2="24" y2="42" stroke="#2F4A37" strokeWidth="1.6" strokeLinecap="round"/>
-        </svg>
-      ),
-    },
-  ];
-
   return (
     <section className="section values-section">
-      <div className="section-narrow reveal" data-reveal="true">
-        <div className="section-label">How Rooted helps</div>
-        <h2 className="section-title">We&apos;re here to hold the household.</h2>
-        <div className="values-grid">
-          {items.map((it, i) => (
-            <div key={i} className="value-card">
-              <div className="value-icon">{it.icon}</div>
-              <h3>{it.title}</h3>
-              <p>{it.body}</p>
-            </div>
-          ))}
-        </div>
+      <div className="values-statement-wrap reveal" data-reveal="true">
+        <div className="section-label">How Rooted feels</div>
+        <p className="values-statement">
+          We&apos;re here to hold the household. Soft, never clinical. Calm prompts, not
+          alarms. The voice of <em>a friend who happens to be a doula</em>, not another
+          to-do list.
+        </p>
       </div>
     </section>
   );

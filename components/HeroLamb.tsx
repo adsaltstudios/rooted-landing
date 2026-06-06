@@ -34,7 +34,7 @@ export function HeroLamb() {
           </div>
         </div>
 
-        <div className="hero-showcase" aria-hidden="true">
+        <div className="hero-showcase" aria-hidden="true" inert={true}>
           <div className="hero-phone-rise">
             <div className="hero-phone">
               <PhoneFrame scale={1}>

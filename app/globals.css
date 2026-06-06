@@ -185,6 +185,18 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
   letter-spacing: -0.02em; line-height: 1; color: var(--forest-deep, #1F3326);
 }
 
+/* NAV: mobile hamburger + dropdown menu (shown < 980px) */
+.nav-burger { display: none; width: 40px; height: 40px; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; padding: 0; color: var(--forest-green); }
+.nav-burger-box { position: relative; width: 22px; height: 16px; }
+.nav-burger-inner { position: absolute; left: 0; top: 50%; margin-top: -1px; width: 22px; height: 2px; border-radius: 2px; background: currentColor; transition: background 160ms var(--ease); }
+.nav-burger-inner::before, .nav-burger-inner::after { content: ""; position: absolute; left: 0; width: 22px; height: 2px; border-radius: 2px; background: currentColor; transition: transform 240ms var(--ease), top 240ms var(--ease); }
+.nav-burger-inner::before { top: -7px; }
+.nav-burger-inner::after { top: 7px; }
+.nav.menu-open .nav-burger-inner { background: transparent; }
+.nav.menu-open .nav-burger-inner::before { top: 0; transform: rotate(45deg); }
+.nav.menu-open .nav-burger-inner::after { top: 0; transform: rotate(-45deg); }
+.nav-mobile { display: none; }
+
 /* ============================================
    BUTTONS
    ============================================ */
@@ -356,13 +368,14 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
 /* ============================================
    VALUES (3-up)
    ============================================ */
-.values-section { background: var(--light-neutral); padding-top: 40px; }
-.values-section .section-title { max-width: 24ch; }
-.values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px; max-width: 1080px; margin: 56px auto 0; }
-.value-card { text-align: left; }
-.value-icon { width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; margin-bottom: 22px; }
-.value-card h3 { font-family: var(--font-display); font-size: var(--text-h3); font-weight: var(--fw-label); margin: 0 0 12px; color: var(--text); letter-spacing: -0.02em; }
-.value-card p { font-size: var(--text-base); color: var(--text-muted); margin: 0 0 16px; line-height: 1.55; }
+.values-section { background: var(--light-neutral); padding-top: 56px; padding-bottom: 84px; }
+.values-statement-wrap { max-width: 1080px; margin: 0 auto; }
+.values-statement {
+  font-family: var(--font-display); font-weight: var(--fw-head);
+  font-size: var(--text-h2); line-height: 1.18; letter-spacing: -0.02em;
+  color: var(--forest-green); max-width: 20ch; margin: 18px 0 0; text-wrap: balance;
+}
+.values-statement em { font-style: normal; font-weight: var(--fw-accent); color: inherit; }
 
 /* ============================================
    TWO-PATIENT (Mom + Baby)
@@ -433,7 +446,6 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
 .handoff-text .quote { font-family: var(--font-display); font-size: var(--text-h3); font-weight: var(--fw-medium); line-height: 1.3; letter-spacing: -0.01em; color: var(--text); padding: 0; margin: 28px 0 0; max-width: 26ch; }
 .handoff-text .attribution { font-size: var(--text-xs); color: var(--text-soft); margin-top: 12px; letter-spacing: 0.04em; }
 .handoff-visual { display: flex; justify-content: center; position: relative; }
-.handoff-visual::before { content: ""; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 480px; height: 480px; border-radius: 50%; background: radial-gradient(circle, rgba(166,182,140,0.32) 0%, rgba(166,182,140,0) 70%); z-index: 0; }
 .handoff-visual .device-stage { position: relative; z-index: 1; transform: scale(0.82); }
 
 /* ============================================
@@ -470,15 +482,14 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
    FINAL CTA
    ============================================ */
 .final-cta { position: relative; padding: 140px 24px; text-align: center; background: var(--forest-green); overflow: hidden; }
-.final-cta::before, .final-cta::after { content: ""; position: absolute; width: 360px; height: 360px; border-radius: 50%; filter: blur(40px); opacity: 0.22; z-index: 0; }
-.final-cta::before { background: var(--sage-soft); top: -120px; left: -120px; }
-.final-cta::after { background: var(--clay); bottom: -160px; right: -120px; opacity: 0.34; }
+.final-cta::after { content: ""; position: absolute; width: 440px; height: 440px; border-radius: 50%; filter: blur(52px); z-index: 0; background: var(--clay); bottom: -180px; right: -140px; opacity: 0.32; }
 .final-cta-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
 .final-cta h2 { font-family: var(--font-display); font-size: var(--text-h1); font-weight: var(--fw-head); letter-spacing: -0.025em; line-height: 1.04; color: var(--light-neutral); margin: 0 auto 22px; max-width: 18ch; text-wrap: balance; }
 .final-cta h2 em { font-style: normal; font-weight: var(--fw-accent); color: var(--sage-soft); }
 .final-cta p { font-size: var(--text-lede); color: rgba(250,247,242,0.82); max-width: 520px; margin: 0 auto 36px; }
-.final-cta .email-form-meta { color: rgba(250,247,242,0.6); }
+.final-cta .email-form-meta { color: rgba(250,247,242,0.72); }
 .final-cta .email-success { background: rgba(250,247,242,0.14); color: var(--light-neutral); border-color: rgba(250,247,242,0.25); }
+.final-cta .email-error { color: #F2C0B0; }
 .final-cta .email-reset { color: rgba(250,247,242,0.6); }
 .final-cta .email-reset:hover { color: var(--light-neutral); }
 
@@ -492,8 +503,8 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
 .email-form button { flex-shrink: 0; font-family: var(--font-body); font-size: var(--text-sm); font-weight: var(--fw-label); letter-spacing: 0.01em; background: var(--forest-green); color: var(--light-neutral); border: none; border-radius: 999px; padding: 12px 22px; cursor: pointer; transition: background 220ms var(--ease); }
 .email-form button:hover { background: var(--forest-deep); }
 .email-form-meta { margin-top: 14px; font-size: var(--text-xs); color: var(--text-muted); text-align: center; }
-.email-success { display: flex; align-items: center; gap: 12px; justify-content: center; background: rgba(110,142,101,0.12); color: var(--mom-accent); border-radius: 999px; padding: 18px 28px; font-weight: var(--fw-label); font-size: var(--text-sm); max-width: 480px; margin: 0 auto; border: 1px solid rgba(110,142,101,0.2); }
-.email-error { margin-top: 10px; font-size: var(--text-xs); color: var(--danger); text-align: center; }
+.email-success { display: flex; align-items: center; gap: 12px; justify-content: center; background: rgba(110,142,101,0.16); color: var(--forest-green); border-radius: 999px; padding: 18px 28px; font-weight: var(--fw-label); font-size: var(--text-sm); max-width: 480px; margin: 0 auto; border: 1px solid rgba(110,142,101,0.28); }
+.email-error { margin-top: 10px; font-size: var(--text-xs); color: #9A3D2C; text-align: center; }
 .email-reset { display: block; margin: 12px auto 0; font-family: var(--font-body); font-size: var(--text-xs); color: var(--text-soft); background: none; border: none; cursor: pointer; }
 .email-reset:hover { color: var(--text-muted); text-decoration: underline; text-underline-offset: 2px; }
 
@@ -551,6 +562,21 @@ footer { background: var(--forest-deep); color: rgba(250,247,242,0.7); padding: 
   .nav { padding: 18px 24px; }
   .nav.is-scrolled { padding: 12px 24px; }
   .nav-links { display: none; }
+  .nav-burger { display: inline-flex; }
+  .nav-cta { display: none; }
+  .nav.menu-open { background: var(--surface); border-bottom-color: var(--border-soft); }
+  .nav-mobile {
+    display: flex; flex-direction: column;
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: var(--surface); border-bottom: 1px solid var(--border-soft);
+    box-shadow: var(--shadow-lg);
+    padding: 6px 24px 22px;
+    transform: translateY(-10px); opacity: 0; pointer-events: none;
+    transition: opacity 200ms var(--ease), transform 240ms var(--ease-out);
+  }
+  .nav.menu-open .nav-mobile { transform: translateY(0); opacity: 1; pointer-events: auto; }
+  .nav-mobile-link { font-family: var(--font-body); font-size: var(--text-base); font-weight: var(--fw-medium); color: var(--text); background: none; border: none; border-bottom: 1px solid var(--border-soft); text-align: left; padding: 15px 4px; cursor: pointer; }
+  .nav-mobile-cta { margin-top: 16px; justify-content: center; width: 100%; }
   .hero.hero-lamb { padding: 116px 22px 56px; }
   .hero-inner { grid-template-columns: 1fr; gap: 8px; max-width: 540px; }
   .hero-copy { max-width: 100%; }
@@ -559,14 +585,12 @@ footer { background: var(--forest-deep); color: rgba(250,247,242,0.7); padding: 
   .hero.hero-lamb .hero-glow { top: 64%; right: 50%; transform: translate(50%, -50%); width: 560px; height: 560px; }
   .hero-phone { transform: rotate(-3deg) scale(0.9); }
   .hero-lamb-badge { width: 104px; height: 104px; }
-  .values-grid { grid-template-columns: 1fr; gap: 40px; }
   .two-patient-grid { grid-template-columns: 1fr; gap: 24px; }
   .patient-card { padding: 36px 28px; }
   .feature-row { grid-template-columns: 1fr; gap: 40px; margin-bottom: 80px; }
   .feature-row.reverse .feature-copy { order: 1; }
   .feature-row.reverse .feature-visual { order: 2; }
   .handoff-grid { grid-template-columns: 1fr; gap: 48px; }
-  .handoff-visual::before { width: 320px; height: 320px; }
   .founder-grid { grid-template-columns: 1fr; gap: 48px; }
   .founder-portrait { max-width: 320px; }
   .faq-grid { grid-template-columns: 1fr; gap: 32px; }
