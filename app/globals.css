@@ -298,7 +298,7 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
 .hero-copy > *:nth-child(4) { animation-delay: 350ms; }
 @keyframes heroRise { 0% { opacity: 0; transform: translateY(16px); } 100% { opacity: 1; transform: translateY(0); } }
 
-.hero.hero-lamb .hero-eyebrow-dark { color: rgba(47, 74, 55, 0.82); margin-bottom: 18px; }
+.hero.hero-lamb .hero-eyebrow-dark { color: var(--forest-green); margin-bottom: 18px; }
 .hero.hero-lamb .hero-eyebrow-dark .dot { background: #6E8E65; }
 .hero.hero-lamb .hero-title-dark {
   color: var(--forest-deep, #1F3326); margin: 0 0 20px; max-width: 15ch; text-align: left;
