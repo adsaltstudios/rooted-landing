@@ -2,13 +2,14 @@
 
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
+import { EmailForm } from './EmailForm';
 
 function scrollToSection(id: string) {
   const el = document.querySelector(id);
   if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 70, behavior: 'smooth' });
 }
 
-export function HeroLamb({ onJoin }: { onJoin: () => void }) {
+export function HeroLamb() {
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -44,7 +45,7 @@ export function HeroLamb({ onJoin }: { onJoin: () => void }) {
 
       <div className="hero-lamb-content">
         <div className="hero-eyebrow hero-eyebrow-dark">
-          <span className="dot" /> Now in private beta
+          <span className="dot" /> Waitlist now open
         </div>
 
         <div className="hero-lamb-mark-wrap">
@@ -63,13 +64,11 @@ export function HeroLamb({ onJoin }: { onJoin: () => void }) {
           {headTail && <em>{headTail}</em>}
         </h1>
         <p className="hero-sub hero-sub-dark">
-          Rooted is the calm command center for new parents — track Mom&apos;s recovery and Baby&apos;s care, side by side, so neither of you has to hold it all in your head.
+          Rooted is the calm command center for new parents. Track Mom&apos;s recovery and Baby&apos;s care, side by side, so neither of you has to hold it all in your head.
         </p>
-        <div className="hero-cta-row">
-          <button className="btn-pill primary lg" onClick={onJoin}>
-            Join the waitlist
-          </button>
-          <button className="btn-pill outline lg" onClick={() => scrollToSection('#features')}>
+        <div className="hero-join">
+          <EmailForm id="hero-email-form" ctaLabel="Join the waitlist" />
+          <button className="hero-see-link" onClick={() => scrollToSection('#features')}>
             See how it works
           </button>
         </div>

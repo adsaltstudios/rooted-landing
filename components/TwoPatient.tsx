@@ -1,9 +1,9 @@
 export function TwoPatient() {
   return (
     <section id="two-patient" className="two-patient">
-      <div className="section-narrow reveal" data-reveal="true" style={{ textAlign: 'center' }}>
+      <div className="reveal" data-reveal="true" style={{ maxWidth: 1180, margin: '0 auto' }}>
         <div className="section-label">Two patients, one calm app</div>
-        <h2 className="section-title" style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+        <h2 className="section-title">
           A postpartum view that keeps <em>both of you</em> in mind.
         </h2>
       </div>
@@ -11,7 +11,7 @@ export function TwoPatient() {
         <div className="patient-card mom reveal" data-reveal="true">
           <span className="pill-tag"><span className="dot" /> Mom</span>
           <h3>Recovery, one gentle step at a time.</h3>
-          <p>Hydration, medications, pelvic floor, mood, sleep, and pain — tracked softly, with prompts that read like a friend, not a chart.</p>
+          <p>Hydration, medications, pelvic floor, mood, sleep, and pain: tracked softly, with prompts that read like a friend, not a chart.</p>
           <ul>
             <li>Medication reminders that don&apos;t feel like alarms</li>
             <li>Hydration and rest, gently nudged</li>

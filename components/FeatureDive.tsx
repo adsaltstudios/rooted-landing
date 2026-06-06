@@ -21,9 +21,9 @@ export function FeatureDive() {
   return (
     <section id="features" className="feature-dive">
       <div className="feature-dive-header reveal" data-reveal="true">
-        <div className="section-label" style={{ textAlign: 'center' }}>Features</div>
+        <div className="section-label">Features</div>
         <h2 className="section-title">A few small things that change <em>everything.</em></h2>
-        <p className="section-lede">No dashboards to learn. No alarms. Just the parts of postpartum that are easy to forget — quietly held for you.</p>
+        <p className="section-lede">No dashboards to learn. No alarms. Just the parts of postpartum that are easy to forget, quietly held for you.</p>
       </div>
 
       <div className="feature-row reveal" data-reveal="true">
@@ -35,7 +35,7 @@ export function FeatureDive() {
             <Bullet>Medication schedule with calm reminders</Bullet>
             <Bullet>Hydration tracking with daily goal</Bullet>
             <Bullet>Mood and sleep check-ins</Bullet>
-            <Bullet>Pelvic floor moments — two minutes, no reps</Bullet>
+            <Bullet>Pelvic floor moments: two minutes, no reps</Bullet>
           </ul>
         </div>
         <div className="feature-visual">
@@ -48,7 +48,7 @@ export function FeatureDive() {
       <div className="feature-row reverse reveal" data-reveal="true">
         <div className="feature-copy">
           <div className="small-label">Baby&apos;s day</div>
-          <h3>Feedings, diapers, sleep — one tap each.</h3>
+          <h3>Feedings, diapers, sleep: one tap each.</h3>
           <p>The things you&apos;d rather not be tallying in your head. Logged from your lock screen, visible to your partner the moment it happens.</p>
           <ul className="feature-bullets">
             <Bullet>One-tap feeding, diaper, and sleep logs</Bullet>

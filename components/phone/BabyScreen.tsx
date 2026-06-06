@@ -28,7 +28,7 @@ export function BabyScreen() {
     <div style={{ paddingBottom: 100 }}>
       <AppHeader
         greeting="9 days old · 7 lb 4 oz"
-        title={<>Iris&apos;s <em style={{ fontStyle: 'italic', color: '#8E6B3F' }}>day</em></>}
+        title={<>Iris&apos;s <em style={{ fontStyle: 'normal', fontWeight: 800, color: '#8E6B3F' }}>day</em></>}
       />
       <div style={{ padding: '0 20px' }}>
         <RCard tone="beige" padding={18}>
