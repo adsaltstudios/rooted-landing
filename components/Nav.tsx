@@ -15,12 +15,33 @@ const LINKS = [
 export function Nav({ onJoin }: { onJoin: () => void }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeId, setActiveId] = useState<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Scroll-spy: highlight the nav link for the section crossing the viewport middle.
+  useEffect(() => {
+    if (!('IntersectionObserver' in window)) return;
+    const sections = LINKS
+      .map((l) => document.getElementById(l.id.slice(1)))
+      .filter((el): el is HTMLElement => el !== null);
+    if (!sections.length) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        const top = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (top) setActiveId('#' + top.target.id);
+      },
+      { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+    );
+    sections.forEach((s) => io.observe(s));
+    return () => io.disconnect();
   }, []);
 
   useEffect(() => {
@@ -47,7 +68,12 @@ export function Nav({ onJoin }: { onJoin: () => void }) {
         </Link>
         <div className="nav-links">
           {LINKS.map((l) => (
-            <button key={l.id} className="nav-link" onClick={() => scrollToId(l.id)}>{l.label}</button>
+            <button
+              key={l.id}
+              className={`nav-link ${activeId === l.id ? 'is-active' : ''}`}
+              aria-current={activeId === l.id ? 'true' : undefined}
+              onClick={() => scrollToId(l.id)}
+            >{l.label}</button>
           ))}
         </div>
       </div>
@@ -68,7 +94,12 @@ export function Nav({ onJoin }: { onJoin: () => void }) {
 
       <div id="mobile-nav" className="nav-mobile" inert={!menuOpen || undefined}>
         {LINKS.map((l) => (
-          <button key={l.id} className="nav-mobile-link" onClick={() => goto(l.id)}>{l.label}</button>
+          <button
+            key={l.id}
+            className={`nav-mobile-link ${activeId === l.id ? 'is-active' : ''}`}
+            aria-current={activeId === l.id ? 'true' : undefined}
+            onClick={() => goto(l.id)}
+          >{l.label}</button>
         ))}
         <button className="btn-pill primary nav-mobile-cta" onClick={() => { setMenuOpen(false); onJoin(); }}>Hold my spot</button>
       </div>

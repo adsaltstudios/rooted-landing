@@ -118,7 +118,7 @@ button { font-family: inherit; }
 a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--forest-green); outline-offset: 3px; border-radius: 4px; }
 .founder-note :focus-visible, .final-cta :focus-visible, footer :focus-visible { outline-color: var(--sage-soft); }
 
-:where(#two-patient, #features, #for-mom, #for-baby, #handoff, #faq, #founder, #join) { scroll-margin-top: 84px; }
+:where(#features, #for-mom, #for-baby, #handoff, #faq, #founder, #join) { scroll-margin-top: 84px; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -163,6 +163,7 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
 .nav-logo svg, .nav-logo img { width: 30px; height: 30px; }
 .nav-links { display: flex; gap: 32px; }
 .nav-link {
+  position: relative;
   font-family: var(--font-body);
   font-size: var(--text-sm); font-weight: var(--fw-medium);
   color: var(--text); letter-spacing: 0;
@@ -170,6 +171,9 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
   cursor: pointer; background: none; border: none; padding: 0;
 }
 .nav-link:hover { opacity: 0.7; }
+.nav-link.is-active { color: var(--forest-green); opacity: 1; }
+.nav-link.is-active::after { content: ""; position: absolute; left: 1px; right: 1px; bottom: -5px; height: 2px; border-radius: 2px; background: var(--forest-green); }
+.nav-mobile-link.is-active { color: var(--forest-green); }
 .nav-right { display: flex; align-items: center; gap: 24px; }
 
 /* NAV v2: real horizontal lockup */
@@ -378,41 +382,6 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
 .values-statement em { font-style: normal; font-weight: var(--fw-accent); color: inherit; }
 
 /* ============================================
-   TWO-PATIENT (Mom + Baby)
-   ============================================ */
-.two-patient { background: var(--surface-cream); padding: 110px 24px; }
-.two-patient-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; max-width: 1180px; margin: 56px auto 0; }
-.patient-card {
-  background: var(--light-neutral); border-radius: 28px; padding: 48px 44px;
-  box-shadow: var(--shadow-md); position: relative; overflow: hidden;
-}
-.patient-card.mom { background: var(--surface-sage); }
-.patient-card.baby { background: var(--surface-beige); }
-.patient-card .pill-tag {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(255,255,255,0.6); padding: 7px 14px; border-radius: 999px;
-  font-size: var(--text-xs); font-weight: var(--fw-label); letter-spacing: 0.04em;
-  color: var(--forest-green); margin-bottom: 22px;
-}
-.patient-card.baby .pill-tag { color: #8E6B3F; }
-.patient-card .pill-tag .dot { width: 6px; height: 6px; border-radius: 999px; background: var(--mom-accent); }
-.patient-card.baby .pill-tag .dot { background: var(--baby-accent); }
-.patient-card h3 { font-family: var(--font-display); font-size: var(--text-h2); font-weight: var(--fw-head); letter-spacing: -0.025em; line-height: 1.08; margin: 0 0 16px; color: var(--text); }
-.patient-card p { font-size: var(--text-base); color: var(--text-muted); line-height: 1.6; margin: 0 0 26px; max-width: 38ch; }
-.patient-card ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
-.patient-card li { display: flex; align-items: center; gap: 12px; font-size: var(--text-sm); color: var(--text); }
-.patient-card li::before {
-  content: ""; width: 18px; height: 18px; border-radius: 6px;
-  background: rgba(255,255,255,0.7); flex-shrink: 0;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18' fill='none'><path d='M4 9.5l3.2 3 6.3-6.5' stroke='%232F4A37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
-  background-size: contain; background-repeat: no-repeat;
-}
-.patient-card.baby li::before {
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18' fill='none'><path d='M4 9.5l3.2 3 6.3-6.5' stroke='%238E6B3F' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
-}
-.patient-card .leaf-deco { position: absolute; bottom: -20px; right: -30px; opacity: 0.18; width: 220px; }
-
-/* ============================================
    FEATURE DEEP-DIVE
    ============================================ */
 .feature-dive { padding: 110px 24px; background: var(--light-neutral); }
@@ -519,7 +488,7 @@ footer { background: var(--forest-deep); color: rgba(250,247,242,0.7); padding: 
 .footer-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
 .footer-col a { font-size: var(--text-sm); color: rgba(250,247,242,0.7); cursor: pointer; transition: color 200ms var(--ease); }
 .footer-col a:hover { color: var(--light-neutral); }
-.footer-bottom { max-width: 1180px; margin: 0 auto; border-top: 1px solid rgba(250,247,242,0.12); padding-top: 28px; display: flex; justify-content: space-between; font-size: var(--text-xs); color: rgba(250,247,242,0.5); flex-wrap: wrap; gap: 16px; }
+.footer-bottom { max-width: 1180px; margin: 0 auto; border-top: 1px solid rgba(250,247,242,0.12); padding-top: 28px; display: flex; justify-content: space-between; font-size: var(--text-xs); color: rgba(250,247,242,0.62); flex-wrap: wrap; gap: 16px; }
 
 /* ============================================
    LEGAL PAGES (privacy, terms)
@@ -548,6 +517,8 @@ footer { background: var(--forest-deep); color: rgba(250,247,242,0.7); padding: 
    DEVICE STAGE (shared phone wrapper)
    ============================================ */
 .device-stage { width: 320px; height: 696px; display: flex; align-items: center; justify-content: center; }
+/* Decorative phone mockups read as pictures, not live UI: no pointer cursor, no dead clicks. */
+.hero-showcase, .feature-visual, .handoff-visual { pointer-events: none; }
 
 /* ============================================
    REVEAL ANIMATIONS
@@ -585,8 +556,6 @@ footer { background: var(--forest-deep); color: rgba(250,247,242,0.7); padding: 
   .hero.hero-lamb .hero-glow { top: 64%; right: 50%; transform: translate(50%, -50%); width: 560px; height: 560px; }
   .hero-phone { transform: rotate(-3deg) scale(0.9); }
   .hero-lamb-badge { width: 104px; height: 104px; }
-  .two-patient-grid { grid-template-columns: 1fr; gap: 24px; }
-  .patient-card { padding: 36px 28px; }
   .feature-row { grid-template-columns: 1fr; gap: 40px; margin-bottom: 80px; }
   .feature-row.reverse .feature-copy { order: 1; }
   .feature-row.reverse .feature-visual { order: 2; }

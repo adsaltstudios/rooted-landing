@@ -25,7 +25,7 @@ export function Footer() {
           <h4>Company</h4>
           <ul>
             <li><a href="#founder">Our story</a></li>
-            <li><a href="#two-patient">Two patients</a></li>
+            <li><a href="#features">Two patients</a></li>
             <li><a href="mailto:hello@rootedapp.co">Contact</a></li>
           </ul>
         </div>

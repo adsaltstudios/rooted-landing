@@ -5,7 +5,6 @@ import { scrollToId } from '@/lib/scroll';
 import { Nav } from '@/components/Nav';
 import { HeroLamb } from '@/components/HeroLamb';
 import { Values } from '@/components/Values';
-import { TwoPatient } from '@/components/TwoPatient';
 import { FeatureDive } from '@/components/FeatureDive';
 import { HandoffSpotlight } from '@/components/HandoffSpotlight';
 import { FounderNote } from '@/components/FounderNote';
@@ -43,7 +42,6 @@ export default function Home() {
       <Nav onJoin={onJoin} />
       <HeroLamb />
       <Values />
-      <TwoPatient />
       <FeatureDive />
       <HandoffSpotlight />
       <FounderNote />

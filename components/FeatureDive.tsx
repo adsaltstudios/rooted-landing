@@ -20,8 +20,8 @@ export function FeatureDive() {
   return (
     <section id="features" className="feature-dive">
       <div className="feature-dive-header reveal" data-reveal="true">
-        <div className="section-label">Features</div>
-        <h2 className="section-title">A few small things that change <em>everything.</em></h2>
+        <div className="section-label">Two patients, one calm app</div>
+        <h2 className="section-title">A postpartum view that keeps <em>both of you</em> in mind.</h2>
         <p className="section-lede">No dashboards to learn. No alarms. Just the parts of postpartum that are easy to forget, quietly held for you.</p>
       </div>
 
